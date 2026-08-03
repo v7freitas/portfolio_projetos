@@ -2735,17 +2735,38 @@ input, select, textarea {
 		}
 
 		.features article .image {
+			border-radius: 0.35em;
+			cursor: pointer;
 			display: block;
+			overflow: hidden;
 			padding: 0;
+			transition: box-shadow 0.25s ease, transform 0.25s ease;
 			width: 100%;
 		}
+
+			.features article .image:hover,
+			.features article .image:focus-visible {
+				box-shadow: 0 0.6em 1.25em rgba(56, 26, 3, 0.22);
+				transform: translateY(-0.25em);
+			}
+
+			.features article .image:focus-visible {
+				outline: solid 3px #a36a3b;
+				outline-offset: 0.25em;
+			}
 
 			.features article .image img {
 				aspect-ratio: 16 / 10;
 				border-radius: 0.35em;
 				display: block;
 				object-fit: cover;
+				transition: transform 0.25s ease;
 				width: 100%;
+			}
+
+			.features article .image:hover img,
+			.features article .image:focus-visible img {
+				transform: scale(1.04);
 			}
 
 		.features article .inner {
@@ -2834,6 +2855,7 @@ input, select, textarea {
 		}
 
 			#header > header .avatar {
+				aspect-ratio: 1 / 1;
 				display: block;
 				margin: 0 auto 1.5em auto;
 				width: 9em;
@@ -3300,6 +3322,7 @@ input, select, textarea {
 					#header > header .avatar {
 						margin: 0 auto 1.6875em auto;
 						width: 6em;
+						height: 6em;
 					}
 
 					#header > header h1 {
