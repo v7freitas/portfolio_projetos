@@ -8,18 +8,22 @@ Portfólio pessoal desenvolvido para apresentar projetos de análise de dados, d
 
 ## Projetos em destaque
 
-- **App Fome Zero:** dashboard interativo para análise de indicadores de restaurantes e apoio a decisões estratégicas.
-- **Dashboards com Power BI:** análise da rede de acomodações do Airbnb em Nova York.
-- **Análise de Dados com Excel:** exploração de dados públicos com tabelas dinâmicas, fórmulas e dashboards.
-- **App Curry Company:** acompanhamento de métricas operacionais de um marketplace de delivery.
+- **Painel Gerencial do Marketplace Fome Zero com Streamlit:** painel interativo para análise de indicadores de restaurantes e apoio a decisões estratégicas.
+- **Relatório Power BI para análise do Marketplace Airbnb em Nova York:** relatório com dashboards interativos para análise do mercado de acomodações do Airbnb em Nova York.
+- **Análise Descritiva utilizando o Excel como ferramenta de Análise de Dados:** aplicação de técnicas de análise para apoiar decisões estratégicas a partir de informações do negócio.
+- **Painel Gerencial do Marketplace Curry Company com Streamlit:** painel interativo para acompanhamento de métricas operacionais de um marketplace de delivery.
 
-## Tecnologias e ferramentas
+## Habilidades, tecnologias e ferramentas
 
 - HTML5 e CSS3
-- Python, Pandas e NumPy
+- Python, Pandas, NumPy e SQL
+- ETL, consultas e extração de dados
+- Estatística descritiva
 - Streamlit, Plotly e Folium
 - Power BI, Power BI Service e Power Query
-- Excel, Git e GitHub
+- Excel, Google Sheets e Jupyter Notebook
+- Streamlit Cloud, Git e GitHub
+- Trabalho em equipe, comunicação, resolução de problemas, pensamento estratégico e aprendizado contínuo
 
 ## Créditos
 
