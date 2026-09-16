@@ -445,6 +445,102 @@ section.block:first-of-type { border-top: 0; }
 .project-card .tags { margin-top: auto; }
 .project-card .card-foot { display: flex; gap: 0.7rem; padding-top: 0.4rem; }
 
+/* ---------- banner de navegação (Power BI) ---------- */
+.pbi-banner {
+	margin-top: 1.4rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.2rem;
+	padding: 1.6rem 1.8rem;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	background: linear-gradient(135deg, rgba(99, 102, 241, 0.13), rgba(139, 92, 246, 0.05));
+}
+.pbi-banner h4 { margin-bottom: 0.35rem; }
+.pbi-banner p { font-size: 0.93rem; max-width: 52ch; }
+.pbi-banner .btn { white-space: nowrap; }
+
+/* ---------- página de relatórios Power BI ---------- */
+.page-head {
+	padding-top: calc(var(--nav-h) + clamp(2.5rem, 7vw, 4.5rem));
+	padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+	border-top: 0;
+}
+.page-head .section-head { margin-bottom: 0; }
+
+.pbi-section {
+	border-top: 0;
+	padding-top: 0;
+}
+.pbi-list {
+	display: flex;
+	flex-direction: column;
+}
+/* cada relatório é uma seção, separada por um filete e bastante respiro */
+.pbi-item {
+	padding: clamp(2.5rem, 6vw, 4rem) 0;
+	border-top: 1px solid var(--border-soft);
+}
+.pbi-item:first-of-type {
+	padding-top: 0;
+	border-top: 0;
+}
+.pbi-item:last-child { padding-bottom: 0; }
+.pbi-item .eyebrow { margin-bottom: 1.1rem; }
+.pbi-card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+.pbi-card-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.5rem 1.7rem;
+	border-bottom: 1px solid var(--border-soft);
+}
+.pbi-card-head h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+.pbi-card-head p { font-size: 0.93rem; max-width: 62ch; }
+.pbi-card-head .tags { margin-top: 0.8rem; }
+
+.pbi-frame {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 600 / 373.5; /* proporção padrão do embed do Power BI */
+	background: var(--bg-soft);
+}
+.pbi-frame iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+.pbi-placeholder {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.7rem;
+	padding: 2rem;
+	text-align: center;
+	color: var(--text-dim);
+}
+.pbi-placeholder svg { width: 30px; height: 30px; color: var(--accent-2); opacity: 0.7; }
+.pbi-placeholder strong { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+.pbi-placeholder span { font-size: 0.83rem; max-width: 40ch; }
+
+@media (max-width: 640px) {
+	.pbi-frame { aspect-ratio: 4 / 5; }
+}
+
 /* ---------- contact ---------- */
 .contact {
 	text-align: center;

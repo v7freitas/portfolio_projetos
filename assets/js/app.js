@@ -11,29 +11,32 @@
 	if (year) year.textContent = new Date().getFullYear();
 
 	/* sombra/fundo da navbar ao rolar */
-	function onScroll() {
-		nav.classList.toggle("scrolled", window.scrollY > 12);
+	if (nav) {
+		var onScroll = function () {
+			nav.classList.toggle("scrolled", window.scrollY > 12);
+		};
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
 	}
-	onScroll();
-	window.addEventListener("scroll", onScroll, { passive: true });
 
-	/* menu mobile */
-	function closeMenu() {
-		links.classList.remove("open");
-		toggle.setAttribute("aria-expanded", "false");
+	/* menu mobile (só existe nas páginas com navegação por seções) */
+	if (toggle && links) {
+		toggle.addEventListener("click", function () {
+			var open = links.classList.toggle("open");
+			toggle.setAttribute("aria-expanded", open ? "true" : "false");
+		});
+		links.addEventListener("click", function (e) {
+			if (e.target.closest("a")) {
+				links.classList.remove("open");
+				toggle.setAttribute("aria-expanded", "false");
+			}
+		});
 	}
-	toggle.addEventListener("click", function () {
-		var open = links.classList.toggle("open");
-		toggle.setAttribute("aria-expanded", open ? "true" : "false");
-	});
-	links.addEventListener("click", function (e) {
-		if (e.target.closest("a")) closeMenu();
-	});
 
 	/* link ativo conforme a seção visível */
-	var navAnchors = Array.prototype.slice.call(
-		links.querySelectorAll('a[href^="#"]:not(.nav-cta)')
-	);
+	var navAnchors = links
+		? Array.prototype.slice.call(links.querySelectorAll('a[href^="#"]:not(.nav-cta)'))
+		: [];
 	var sections = navAnchors
 		.map(function (a) { return document.querySelector(a.getAttribute("href")); })
 		.filter(Boolean);
@@ -58,7 +61,8 @@
 
 	/* revelar elementos ao entrar na viewport */
 	var revealTargets = document.querySelectorAll(
-		".section-head, .about-grid > *, .skill-card, .project-card, .hero-photo, .contact-actions"
+		".section-head, .about-grid > *, .skill-card, .project-card, .hero-photo," +
+		" .contact-actions, .pbi-banner, .pbi-card"
 	);
 	if ("IntersectionObserver" in window) {
 		Array.prototype.forEach.call(revealTargets, function (el) {

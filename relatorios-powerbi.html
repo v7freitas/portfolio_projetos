@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Relatórios Power BI — Vinícius Freitas</title>
+	<meta name="description" content="Relatórios de Power BI publicados por Vinícius Freitas, incorporados diretamente do Power BI Service." />
+	<meta name="color-scheme" content="dark" />
+
+	<meta property="og:title" content="Relatórios Power BI — Vinícius Freitas" />
+	<meta property="og:description" content="Relatórios de Power BI publicados e incorporados diretamente do Power BI Service." />
+	<meta property="og:type" content="website" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+	<!-- ===================== NAV ===================== -->
+	<header class="nav" id="nav">
+		<div class="container">
+			<a href="index.html#top" class="brand">
+				<span class="mark">VF</span>
+				<span class="full">Vinícius de Freitas Ferreira</span>
+			</a>
+
+			<a href="index.html#projetos" class="btn btn-ghost btn-sm">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+				Voltar ao portfólio
+			</a>
+		</div>
+	</header>
+
+	<main id="top">
+
+		<!-- ===================== INTRO ===================== -->
+		<section class="block page-head">
+			<div class="container">
+				<div class="section-head">
+					<span class="eyebrow">Power BI</span>
+					<h2>Relatórios publicados</h2>
+					<p>
+						Relatórios interativos incorporados diretamente do Power BI. Use os filtros,
+						navegue pelas páginas e explore os visuais sem sair daqui.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== RELATÓRIOS ===================== -->
+		<section class="block pbi-section" id="relatorios">
+			<div class="container">
+				<div class="pbi-list">
+
+					<!--
+						COMO ADICIONAR UM RELATÓRIO
+						1. No Power BI Service, abra o relatório e vá em: Arquivo › Inserir relatório ›
+						   Publicar na web (público)  — ou  Inserir em um site ou portal.
+						2. Copie o código <iframe ...> gerado.
+						3. Duplique um <section class="pbi-item"> abaixo e cole o iframe dentro de .pbi-frame.
+						   Remova width/height do iframe: o CSS já deixa o relatório responsivo.
+						4. Atualize o número do <span class="eyebrow"> para manter a sequência.
+					-->
+
+					<!-- ---------- 01 · Airbnb ---------- -->
+					<section class="pbi-item">
+						<span class="eyebrow">Relatório 01</span>
+						<article class="pbi-card">
+							<div class="pbi-card-head">
+								<div>
+									<h3>Airbnb em Nova York</h3>
+									<p>
+										Análise do mercado de acomodações do Airbnb em Nova York: preços,
+										disponibilidade e distribuição por região.
+									</p>
+									<div class="tags">
+										<span class="tag">Power BI</span><span class="tag">Power Query</span>
+									</div>
+								</div>
+								<a class="btn btn-ghost btn-sm" href="https://github.com/v7freitas/airbnb_pbix" target="_blank" rel="noopener noreferrer">
+									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.3-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.6.24 2.78.12 3.08.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.78 1.05.78 2.12v3.14c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+									Ver no GitHub
+								</a>
+							</div>
+							<div class="pbi-frame">
+								<iframe
+									title="Airbnb_Analytics"
+									src="https://app.powerbi.com/view?r=eyJrIjoiYjkyZDA0OTItNWNjOS00MGVlLTg5NDQtZDk3YmUxYzQ3Y2EzIiwidCI6ImIyODdiMTRiLWY0NTQtNGE3OS1iYzk3LWU4NDIzMWI5MDI5YyJ9"
+									frameborder="0"
+									allowfullscreen="true"
+									loading="lazy"></iframe>
+							</div>
+						</article>
+					</section>
+
+					<!-- ---------- 02 · Netflix ---------- -->
+					<section class="pbi-item">
+						<span class="eyebrow">Relatório 02</span>
+						<article class="pbi-card">
+							<div class="pbi-card-head">
+								<div>
+									<h3>Netflix — Catálogo Global</h3>
+									<p>
+										Panorama do catálogo global da Netflix: mix entre filmes e séries, países
+										que mais produzem, ritmo de adição de títulos ao longo dos anos e elenco
+										mais recorrente. Use os filtros de tipo e ano no topo do relatório.
+									</p>
+									<div class="tags">
+										<span class="tag">Power BI</span><span class="tag">Power Query</span>
+									</div>
+								</div>
+							</div>
+							<div class="pbi-frame">
+								<iframe
+									title="Netflix_Dash"
+									src="https://app.powerbi.com/view?r=eyJrIjoiNjc0MGY2ZDMtZGMxYy00OWRlLWI1YmEtNDY0MzZhN2M0N2YzIiwidCI6ImIyODdiMTRiLWY0NTQtNGE3OS1iYzk3LWU4NDIzMWI5MDI5YyJ9"
+									frameborder="0"
+									allowfullscreen="true"
+									loading="lazy"></iframe>
+							</div>
+						</article>
+					</section>
+
+					<!-- ---------- 03 · Sleep Health ---------- -->
+					<section class="pbi-item">
+						<span class="eyebrow">Relatório 03</span>
+						<article class="pbi-card">
+							<div class="pbi-card-head">
+								<div>
+									<h3>Sleep Health — Sono e estilo de vida</h3>
+									<p>
+										Análise dos hábitos de sono de 374 pessoas: qualidade média do sono por
+										ocupação, incidência de distúrbios como apneia e insônia e a relação entre
+										nível de estresse, atividade física e qualidade do sono. Filtros por IMC,
+										gênero e faixa etária, com as páginas Visão Geral, Perfil e Saúde do Sono.
+									</p>
+									<div class="tags">
+										<span class="tag">Power BI</span><span class="tag">Power Query</span>
+									</div>
+								</div>
+							</div>
+							<div class="pbi-frame">
+								<iframe
+									title="DashSleepHealth"
+									src="https://app.powerbi.com/view?r=eyJrIjoiZDEzZjNjNGItMmE0YS00ZjhjLWEwOGItMmU4YjFhMTgyZWZkIiwidCI6ImIyODdiMTRiLWY0NTQtNGE3OS1iYzk3LWU4NDIzMWI5MDI5YyJ9"
+									frameborder="0"
+									allowfullscreen="true"
+									loading="lazy"></iframe>
+							</div>
+						</article>
+					</section>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== CONTATO ===================== -->
+		<section class="block contact">
+			<div class="container">
+				<div class="section-head">
+					<span class="eyebrow">Contato</span>
+					<h2>Vamos conversar</h2>
+					<p>Quer entender como um destes relatórios foi construído? É só chamar.</p>
+				</div>
+				<div class="contact-actions">
+					<a class="btn btn-primary" href="mailto:vff2804@gmail.com">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+						vff2804@gmail.com
+					</a>
+					<a class="btn btn-ghost" href="https://www.linkedin.com/in/viniciusfreitasf" target="_blank" rel="noopener noreferrer">
+						<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+						LinkedIn
+					</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<span>&copy; <span id="year">2026</span> Vinícius de Freitas Ferreira</span>
+			<span><a href="index.html#top">Voltar ao portfólio</a></span>
+		</div>
+	</footer>
+
+	<script src="assets/js/app.js"></script>
+</body>
+</html>
