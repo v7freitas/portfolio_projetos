@@ -40,5 +40,3 @@ Publicados pelo recurso de inserção do Power BI e incorporados na [página de 
 Layout próprio, desenvolvido do zero em HTML, CSS e JavaScript — sem frameworks, bibliotecas ou templates.
 
 Tipografia [Inter](https://fonts.google.com/specimen/Inter) e [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono), servidas pelo Google Fonts sob a licença SIL Open Font License.
-
-> Versões anteriores deste portfólio usavam o template **Read Only**, da [HTML5 UP](https://html5up.net/read-only), sob a licença CCA 3.0. Nenhum arquivo do template permanece no repositório; o `LICENSE.txt` é mantido como registro dessa origem.
