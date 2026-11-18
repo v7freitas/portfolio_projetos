@@ -23,6 +23,16 @@
 	--accent-soft:   rgba(99, 102, 241, 0.14);
 	--accent-grad:   linear-gradient(120deg, #6366f1 0%, #8b5cf6 100%);
 
+	/* gradiente do topo: violeta vivo que escurece até o fundo da página */
+	--hero-grad:
+		radial-gradient(70% 55% at 50% 0%, rgba(167, 139, 250, 0.45), transparent 70%),
+		radial-gradient(45% 40% at 8% 0%, rgba(99, 102, 241, 0.35), transparent 70%),
+		linear-gradient(180deg, #6a2fe3 0%, #5522c4 22%, #3a1683 48%, #1b0f36 74%, var(--bg) 100%);
+	--on-grad:       rgba(245, 243, 255, 0.82);   /* texto de apoio sobre o gradiente */
+	--on-grad-dim:   rgba(221, 214, 254, 0.62);
+	--on-grad-line:  rgba(255, 255, 255, 0.14);
+	--grad-text-light: linear-gradient(120deg, #ddd2ff 0%, #b69cff 100%);
+
 	/* layout */
 	--maxw:          1120px;
 	--radius:        14px;
@@ -140,7 +150,7 @@ section.block:first-of-type { border-top: 0; }
 	z-index: 100;
 	display: flex;
 	align-items: center;
-	background: rgba(11, 13, 18, 0.55);
+	background: transparent;
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	border-bottom: 1px solid transparent;
@@ -266,6 +276,22 @@ section.block:first-of-type { border-top: 0; }
 .btn-sm { padding: 0.6rem 1rem; font-size: 0.88rem; }
 
 /* ---------- hero ---------- */
+.hero,
+.page-head {
+	background: var(--hero-grad);
+}
+/* elementos sobre o gradiente ganham tons claros para manter o contraste */
+:is(.hero, .page-head) .eyebrow { color: #ddd6fe; }
+:is(.hero, .page-head) .eyebrow::before { background: #c4b5fd; }
+:is(.hero, .page-head) p { color: var(--on-grad); }
+:is(.hero, .page-head) .grad-text { background-image: var(--grad-text-light); }
+.hero .btn-ghost {
+	background: rgba(255, 255, 255, 0.06);
+	border-color: rgba(255, 255, 255, 0.18);
+}
+.hero .btn-ghost:hover { border-color: #c4b5fd; }
+.hero + section.block { border-top: 0; }
+
 .hero {
 	position: relative;
 	padding-top: calc(var(--nav-h) + clamp(3rem, 9vw, 6rem));
@@ -294,11 +320,11 @@ section.block:first-of-type { border-top: 0; }
 	flex-wrap: wrap;
 	gap: 2rem;
 	padding-top: 1.6rem;
-	border-top: 1px solid var(--border-soft);
+	border-top: 1px solid var(--on-grad-line);
 }
 .hero-stats div { display: flex; flex-direction: column; }
 .hero-stats b { font-size: 1.5rem; color: #fff; letter-spacing: -0.02em; }
-.hero-stats span { font-size: 0.85rem; color: var(--text-dim); }
+.hero-stats span { font-size: 0.85rem; color: var(--on-grad-dim); }
 
 .hero-photo {
 	position: relative;
@@ -405,12 +431,130 @@ section.block:first-of-type { border-top: 0; }
 	color: var(--text-muted);
 }
 
-/* ---------- projects ---------- */
-.project-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 1.4rem;
+/* ---------- projects (carrossel) ---------- */
+.carousel { --gap: 1.4rem; --per-view: 3; }
+
+.carousel-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1.5rem;
+	margin-bottom: 2.2rem;
 }
+.carousel-head .section-head { margin-bottom: 0; }
+
+.carousel-stage { position: relative; }
+
+/* setas nas laterais dos cards: só o ícone, sem fundo; mesma transição (0,3 s ease) das bolinhas abaixo */
+.carousel-btn {
+	position: absolute;
+	top: calc(50% - 28px);
+	z-index: 3;
+	display: grid;
+	place-items: center;
+	width: 56px; height: 56px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--text);
+	cursor: pointer;
+	/* sombra suave só para o ícone não se perder quando passa sobre um card */
+	filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.75));
+	transition: color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+.carousel-btn--prev { left: -14px; }
+.carousel-btn--next { right: -14px; }
+.carousel-btn svg { width: 38px; height: 38px; stroke-width: 2.2; }
+.carousel-btn:hover:not(:disabled) { color: #a78bfa; }
+.carousel-btn--prev:hover:not(:disabled) { transform: translateX(-4px); }
+.carousel-btn--next:hover:not(:disabled) { transform: translateX(4px); }
+/* nas pontas a seta some, em vez de ficar apagada em cima do card */
+.carousel-btn:disabled { opacity: 0; visibility: hidden; cursor: default; }
+
+/* telas largas: as setas ficam no fundo da página, ao lado dos cards */
+@media (min-width: 1240px) {
+	.carousel-btn--prev { left: -68px; }
+	.carousel-btn--next { right: -68px; }
+}
+
+.carousel-viewport {
+	position: relative;
+	overflow-x: clip; /* corta a borda elástica sem cortar a elevação do card */
+}
+/* esmaece as bordas quando há mais cards escondidos (camadas leves, sem repintar a rolagem) */
+.carousel-viewport::before,
+.carousel-viewport::after {
+	content: "";
+	position: absolute;
+	top: 0; bottom: 0;
+	width: 56px;
+	z-index: 2;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+}
+.carousel-viewport::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+.carousel-viewport::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+.carousel-viewport.can-prev::before,
+.carousel-viewport.can-next::after { opacity: 1; }
+
+.carousel-track {
+	display: flex;
+	gap: var(--gap);
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+	/* respiro para a elevação do card no hover */
+	padding: 8px 0 14px;
+	margin: -8px 0 -14px;
+	cursor: grab;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+/* enquanto o JS anima ou o usuário arrasta, o snap fica desligado para não brigar com o movimento */
+.carousel-track.animating,
+.carousel-track.dragging { scroll-snap-type: none; }
+.carousel-track.dragging { cursor: grabbing; user-select: none; transition: none; }
+.carousel-track.dragging * { pointer-events: none; }
+.carousel-track.settling { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.carousel-track:focus-visible { outline-offset: 6px; border-radius: var(--radius); }
+
+.carousel-track > * {
+	flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+	scroll-snap-align: start;
+}
+
+.carousel-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-top: 1.8rem;
+}
+.carousel-dots button {
+	width: 8px; height: 8px;
+	padding: 0;
+	border: 0;
+	border-radius: 99px;
+	background: var(--border);
+	cursor: pointer;
+	transition: width 0.3s ease, background 0.3s ease;
+}
+.carousel-dots button:hover { background: var(--text-dim); }
+.carousel-dots button[aria-selected="true"] { width: 28px; background: var(--accent-grad); }
+
+/* sem nada para rolar: esconde os controles */
+.carousel.is-static .carousel-btn,
+.carousel.is-static .carousel-dots { display: none; }
+.carousel.is-static .carousel-track { cursor: auto; }
+
+@media (max-width: 900px) { .carousel { --per-view: 2; } }
+@media (max-width: 640px) {
+	.carousel { --gap: 1rem; --per-view: 1.15; }
+	.carousel-btn { display: none; }
+}
+
 .project-card {
 	display: flex;
 	flex-direction: column;
@@ -559,7 +703,8 @@ section.block:first-of-type { border-top: 0; }
 .contact {
 	text-align: center;
 	background:
-		radial-gradient(40rem 20rem at 50% 0%, var(--accent-soft), transparent 70%);
+		radial-gradient(40rem 20rem at 50% 0%, var(--accent-soft), transparent 70%),
+		radial-gradient(55rem 26rem at 50% 100%, rgba(106, 47, 227, 0.22), transparent 70%);
 }
 .contact .section-head { margin: 0 auto 2.5rem; }
 .contact-actions {
@@ -577,9 +722,10 @@ section.block:first-of-type { border-top: 0; }
 .site-footer .container {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
-	justify-content: space-between;
+	gap: 0.4rem 1.5rem;
+	justify-content: center;
 	align-items: center;
+	text-align: center;
 	font-size: 0.85rem;
 	color: var(--text-dim);
 }
@@ -593,6 +739,23 @@ section.block:first-of-type { border-top: 0; }
 	transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.in { opacity: 1; transform: none; }
+
+/* ---------- navbar sobre o gradiente (topo da página, desktop) ---------- */
+@media (min-width: 861px) {
+	.nav:not(.scrolled) .nav-links a:not(.nav-cta) { color: rgba(255, 255, 255, 0.82); }
+	.nav:not(.scrolled) .nav-links a:not(.nav-cta):hover,
+	.nav:not(.scrolled) .nav-links a.active { color: #fff; background: rgba(255, 255, 255, 0.1); }
+	.nav:not(.scrolled) .nav-cta {
+		color: #2e1065;
+		background: #fff;
+		border-color: #fff;
+	}
+	.nav:not(.scrolled) .nav-cta:hover { background: #ede9fe; }
+}
+.nav:not(.scrolled) .btn-ghost {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.2);
+}
 
 /* ---------- responsivo ---------- */
 @media (max-width: 900px) {
