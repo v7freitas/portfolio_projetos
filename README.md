@@ -19,6 +19,7 @@ Portfólio pessoal desenvolvido para apresentar projetos de análise de dados, d
 
 Publicados pelo recurso de inserção do Power BI e incorporados na [página de relatórios](https://v7freitas.github.io/portfolio_projetos/relatorios-powerbi.html), com filtros e navegação entre páginas.
 
+- ⭐ **Hashtag Eletro — Análise de Vendas** *(em destaque)*: faturamento, lucro e margem de uma varejista de eletrônicos — comparativo com o ano anterior, mix online x física, faturamento por categoria e desempenho por continente.
 - **Airbnb em Nova York:** mercado de acomodações da cidade — preços, disponibilidade e distribuição por região. ([repositório](https://github.com/v7freitas/airbnb_pbix))
 - **Netflix — Catálogo Global:** panorama do catálogo — mix entre filmes e séries, países que mais produzem, ritmo de adição de títulos ao longo dos anos e elenco mais recorrente.
 - **Sleep Health — Sono e estilo de vida:** hábitos de sono de 374 pessoas — qualidade do sono por ocupação, incidência de distúrbios como apneia e insônia e a relação entre nível de estresse, atividade física e qualidade do sono.

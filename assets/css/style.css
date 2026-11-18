@@ -458,6 +458,7 @@ section.block:first-of-type { border-top: 0; }
 	border: 1px solid var(--border);
 	background: linear-gradient(135deg, rgba(99, 102, 241, 0.13), rgba(139, 92, 246, 0.05));
 }
+.pbi-banner .eyebrow { margin-bottom: 0.5rem; }
 .pbi-banner h4 { margin-bottom: 0.35rem; }
 .pbi-banner p { font-size: 0.93rem; max-width: 52ch; }
 .pbi-banner .btn { white-space: nowrap; }
@@ -494,6 +495,19 @@ section.block:first-of-type { border-top: 0; }
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	overflow: hidden;
+}
+/* relatório em destaque: borda e topo com o acento da marca */
+.pbi-card--featured {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 1px var(--accent-soft), var(--shadow);
+	position: relative;
+}
+.pbi-card--featured::before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	height: 3px;
+	background: var(--accent-grad);
 }
 .pbi-card-head {
 	display: flex;
